@@ -1,9 +1,11 @@
 {
-  "profile": "",
-  "region": "",
+  "profile": "default",
+  "region": "ap-southeast-2",
   "configuration": "Release",
   "s3-prefix": "Stores/",
   "template": "serverless.template",
   "template-parameters": "",
-  "docker-host-build-output-dir": "./bin/Release/lambda-publish"
+  "docker-host-build-output-dir": "./bin/Release/lambda-publish",
+  "s3-bucket": "serverless-dotnet-saas-functions",
+  "stack-name": "serverless-dotnet-saas-functions"
 }

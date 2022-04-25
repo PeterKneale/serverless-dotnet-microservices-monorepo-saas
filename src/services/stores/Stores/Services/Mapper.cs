@@ -1,27 +1,16 @@
-﻿using Stores.Models;
+﻿namespace Stores.Services;
 
-namespace Stores.Services
+public interface IMapper
 {
-    public interface IMapper
-    {
-        StoreDto Map(StoreData store);
-        StoreData Map(StoreDto store);
-    }
+    StoreDto Map(StoreData store);
+}
     
-    internal class Mapper : IMapper
+internal class Mapper : IMapper
+{
+    public StoreDto Map(StoreData store) => new StoreDto
     {
-        public StoreDto Map(StoreData store) => new StoreDto
-        {
-            StoreId = store.StoreId,
-            AccountId = store.AccountId,
-            Name = store.Name
-        };
-        
-        public StoreData Map(StoreDto store) => new StoreData
-        {
-            StoreId = store.StoreId,
-            AccountId = store.AccountId,
-            Name = store.Name
-        };
-    }
+        StoreId = store.StoreId,
+        AccountId = store.AccountId,
+        Name = store.Name
+    };
 }

@@ -1,41 +1,37 @@
-﻿using System;
-using Microsoft.Extensions.Configuration;
+﻿namespace Stores.Services;
 
-namespace Stores.Services
+public interface IValidator
 {
-    public interface IValidator
-    {
-        void ValidateId(Guid id);
-        void ValidateName(string name);
-    }
+    void ValidateId(Guid id);
+    void ValidateName(string name);
+}
     
-    internal class Validator : IValidator
+internal class Validator : IValidator
+{
+    private readonly ISettings _settings;
+        
+    public Validator(ISettings settings)
     {
-        private readonly ISettings _settings;
+        _settings = settings;
+    }
         
-        public Validator(ISettings settings)
+    public void ValidateId(Guid id)
+    {
+        if (id == Guid.Empty)
         {
-            _settings = settings;
+            throw new ArgumentException("id is empty", nameof(id));
         }
+    }
         
-        public void ValidateId(Guid id)
+    public void ValidateName(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name))
         {
-            if (id == Guid.Empty)
-            {
-                throw new ArgumentException("id is empty", nameof(id));
-            }
+            throw new ArgumentException("name too short", nameof(name));
         }
-        
-        public void ValidateName(string name)
+        if (name.Length > _settings.StoreNameMaxLength)
         {
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                throw new ArgumentException("name too short", nameof(name));
-            }
-            if (name.Length > _settings.StoreNameMaxLength)
-            {
-                throw new ArgumentException("name too long", nameof(name));
-            }
+            throw new ArgumentException("name too long", nameof(name));
         }
     }
 }

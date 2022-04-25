@@ -1,11 +1,8 @@
-﻿using System;
+﻿namespace Stores.Models;
 
-namespace Stores.Models
+public class StoreDto
 {
-    public class StoreDto
-    {
-        public Guid StoreId { get; init; }
-        public Guid AccountId { get; init; }
-        public string Name { get; init; }
-    }
+    public Guid StoreId { get; init; }
+    public Guid AccountId { get; init; }
+    public string Name { get; init; }
 }
