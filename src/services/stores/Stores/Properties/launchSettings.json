@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Stores": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:62901;http://localhost:62902"
+    }
+  }
+}

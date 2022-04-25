@@ -1,0 +1,9 @@
+{
+  "profile": "",
+  "region": "",
+  "configuration": "Release",
+  "s3-prefix": "Stores/",
+  "template": "serverless.template",
+  "template-parameters": "",
+  "docker-host-build-output-dir": "./bin/Release/lambda-publish"
+}
